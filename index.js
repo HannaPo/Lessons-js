@@ -1,10 +1,13 @@
 // https://www.codewars.com/join?language=javascript
 // ---------------Kahoot---------//
 
+// const array = [1, 2, 3];
+
 // Мутабельні та імутабельні типи даних
 // https://developer.mozilla.org/en-US/docs/Glossary/Mutable
-// const clients = ["Mango", "Poly", "Ajax"];
-// const string = "script";
+
+const clients = ["Mango", "Poly", "Ajax"];
+const string = "script";
 
 // // Імутабельні
 // string[0] = "q";
@@ -12,15 +15,31 @@
 
 // // Мутабельні
 
+// console.log(typeof clients);
+
 // clients.splice(1, 1);
+
+// clients.push(`Andrii`);
+
+// clients[1] = `Vitaliy`;
+
 // console.log(clients);
 
 // За посиланням
 // Складні (якщо говорити правильно то тільки Object)
 //  Object
 //  Array
+
 // const arr1 = [1, 2, 3];
-// const arr2 = arr;
+
+// const arr2 = arr1;
+
+// arr2[0] = 10;
+
+// console.log(arr1);
+// console.log(arr2);
+
+// console.log(arr1 === arr2);
 
 // За значенням
 // Примітивні
@@ -31,7 +50,16 @@
 // undefined
 
 // let a = 10;
+
 // let b = a;
+
+// console.log(a);
+// console.log(b);
+
+// b = 5;
+
+// console.log(a);
+// console.log(b);
 
 /*
   Example 1 - Базові операції з масивом
@@ -54,6 +82,34 @@
   Подивиттсь методи push unshift shift splice
 */
 
+// const genres = ["Jazz", "Blues"];
+
+// genres.push("Rock&roll");
+
+// console.log(genres);
+
+// console.log(genres[0]);
+
+// console.log(genres[genres.length - 1]);
+
+// genres.unshift("Contry", "Reggie");
+
+// console.log(genres);
+
+// ------
+
+// const genres = ["Jazz", "Blues"];
+
+// genres.shift();
+
+// genres.pop();
+
+// genres.splice(0, 1);
+
+// genres.splice(genres.length, 0, "Rock&roll");
+
+// console.log(genres);
+
 /*  
   Example 2 - Масиви та рядки
 
@@ -64,7 +120,15 @@
   Метод split
 */
 
-// const values = '8 11';
+// const values = "8 11";
+
+// const arrayValues = values.split(" ");
+
+// console.log(arrayValues);
+
+// const square = arrayValues[0] * arrayValues[1];
+
+// console.log(square);
 
 /*
   Example 3 - Перебір масиву
@@ -76,7 +140,11 @@
   Нумерація елементів має починатися з першого.
 */
 
-// const fruits = ['🍎', '🍇', '🍑', '🍌', '🍋'];
+// const fruits = ["🍎", "🍇", "🍑", "🍌", "🍋"];
+
+// for (let index = 0; index < fruits.length; index += 1) {
+//   console.log(`${index + 1}: ${fruits[index]}`);
+// }
 
 /*
   Example 4 - Масиви та цикли
@@ -91,8 +159,18 @@
   Метод split
 */
 
-// const names = 'Jacob,William,Solomon,Kate';
-// const phones = '38001234567,38001112233,380055566377,38099912233';
+// const names = "Jacob,William,Solomon,Kate";
+
+// const phones = "38001234567,38001112233,380055566377,38099912233";
+
+// const namesArray = names.split(",");
+// const phonesArray = phones.split(",");
+
+// console.log(namesArray);
+
+// for (let index = 0; index < namesArray.length; index += 1) {
+//   console.log(`${namesArray[index]} - ${phonesArray[index]}`);
+// }
 
 /*
   Example 5 - Масиви та рядки
@@ -104,7 +182,19 @@
   методи pop shift join
 */
 
-// const string = 'Welcome to the future';
+// const stringEl = "Welcome to the future";
+
+// const array = stringEl.split(" ");
+
+// array.pop();
+
+// array.shift();
+
+// console.log(array);
+
+// const newString = array.join(" ");
+
+// console.log(newString);
 
 /*
   Example 6 - Масиви та рядки
@@ -114,7 +204,48 @@
   Методи split reverse join
 */
 
-// const string = 'Welcome to the future';
+// Variant 1
+// const stringEl = "Welcome to the future";
+
+// const array = stringEl.split(" ");
+
+// array.reverse();
+
+// console.log(array);
+
+// const newString = array.join(" ");
+
+// console.log(newString);
+
+// Variant 2
+
+// const stringEl = "Welcome to the future";
+
+// let newString = "";
+
+// for (let index = 0; index < stringEl.length; index += 1) {
+//   // 1: `W` - ``
+
+//   // 2: `e` - `W`
+
+//   // 3: `l` - `eW`
+
+//   newString = stringEl[index] + newString;
+// }
+
+// console.log(newString);
+
+// Variant 3
+
+// const stringEl = "Welcome to the future";
+
+// let newString = "";
+
+// for (let index = stringEl.length - 1; index >= 0; index -= 1) {
+//   newString += stringEl[index];
+// }
+
+// console.log(newString);
 
 /*
   Example 7 - Пошук елемента
@@ -125,3 +256,62 @@
 */
 
 // const numbers = [101, 78, 12, 76, 5, 11, 9];
+
+// let minNumber = Infinity;
+
+// for (let el of numbers) {
+//   if (minNumber > el) {
+//     minNumber = el;
+//   }
+// }
+
+// console.log(minNumber);
+
+// Чому цей запис
+
+// const colors = ["red", "green", "blue"];
+
+// colors.splice(2, 0, "purple");
+// console.log(colors);
+
+// не працює в такому вигляді:
+
+// const colors = ["red", "green", "blue"];
+
+// const addColor = colors.splice(2, 1, "teal");
+// console.log(addColor);
+
+// const logins = [
+//   "AlexUkrop",
+//   "janusz-kowalski",
+//   "apple_2022",
+//   "qwe123",
+//   "abc-988",
+// ];
+
+// let loginToFind = prompt("Type your login");
+// let message = `Login ${loginToFind} is not finded`;
+
+// for (login of logins) {
+//   if (loginToFind === login) {
+//     message = `Login ${loginToFind} is finded`;
+//     break; //* чи в даному випадку варто писати break? По суті далі нічого немає і без break все чудово працює *//
+//   }
+// }
+
+// for (letter of letters) {
+//   if (letter === letter.toUpperCase()) {
+//     aString += letter.toLowerCase();
+//   }
+
+//   aString += letter.toUpperCase();
+// }
+
+const arr = [
+  [1, 2, 4],
+  [5, 6, 7],
+];
+
+for (let el of arr) {
+  console.log(el);
+}

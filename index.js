@@ -27,11 +27,19 @@
 //   return '_' + Math.random().toString(36).substr(2, 9);
 // }
 
-// function createProduct(productData, callback) {}
+// function createProduct(productData, callback) {
+//   const newProduct = { ...productData, id: generateId() };
 
-// function logProduct(product) {}
+//   callback(newProduct);
+// }
 
-// function logTotalPrice(product) {}
+// function logProduct(product) {
+//   console.log(product);
+// }
+
+// function logTotalPrice(product) {
+//   console.log(product.price * product.quantity);
+// }
 
 // createProduct(
 //   {
@@ -75,8 +83,28 @@
 //   firstname: 'Andrii',
 //   lastname: 'Shevchuk',
 //   balance: 618,
-//   withdraw(amount, onSuccess, onError) {},
-//   deposit(amount, onSuccess, onError) {},
+//   withdraw(amount, onSuccess, onError) {
+//     if (amount > TRANSACTION_LIMIT) {
+//       onError('Сума є більшою за ліміт транзакцій');
+//     } else if (amount > this.balance) {
+//       onError('Сума є більшою ніж є на балансі');
+//     } else {
+//       this.balance -= amount;
+
+//       onSuccess('Зняття відбулось успішно');
+//     }
+//   },
+//   deposit(amount, onSuccess, onError) {
+//     if (amount > TRANSACTION_LIMIT) {
+//       onError('Сума є більшою за ліміт транзакцій');
+//     } else if (amount <= 0) {
+//       onError('Cума зняття є меншою або рівна нулю');
+//     } else {
+//       this.balance += amount;
+
+//       onSuccess('Поповнення відбулось успішно');
+//     }
+//   },
 // };
 
 // function handleSuccess(message) {
@@ -106,13 +134,27 @@
   результати виклику коллбеку
 */
 
-// function each(array, callback) {}
+// function each(array, callback) {
+//   const resultArray = [];
 
-// console.log(
-//   each([64, 49, 36, 25, 16], function (value) {
-//     return value * 2;
-//   })
-// );
+//   for (let num of array) {
+//     const number = callback(num);
+
+//     resultArray.push(number);
+//   }
+
+//   return resultArray;
+// }
+
+// const dasdasdas = function (value) {
+//   return value * 2;
+// };
+
+// console.log(each([64, 49, 36, 25, 16], dasdasdas));
+
+// console.log(each([64, 49, 36, 25, 16, 550, 5353], dasdasdas));
+
+// console.log(each([64], dasdasdas));
 
 // console.log(
 //   each([64, 49, 36, 25, 16], function (value) {
@@ -147,11 +189,17 @@
   - Різниця з function declaration (відсутність arguments та сплиття)
 
   Перепишіть функцію getSum, слідуючи синтаксису стрілочних функцій
-*/
+  */
 
 // function getSum(firstNumber, secondNumber) {
 //   return firstNumber + secondNumber;
 // }
+
+// const getSum1 = function getSum(firstNumber, secondNumber) {
+//   return firstNumber + secondNumber;
+// };
+
+// const getSum2 = (firstNumber, secondNumber) => firstNumber + secondNumber;
 
 /*
   5. Стрілочні функції
@@ -161,26 +209,24 @@
 
 // Функція, що повертає випадкове значення id
 
-// function generateId() {
-//   return '_' + Math.random().toString(36).substr(2, 9);
-// }
+// const generateId = () => '_' + Math.random().toString(36).substr(2, 9);
 
-// function createProduct(productData, callback) {
+// const createProduct = (productData, callback) => {
 //   const product = {
 //     ...productData,
 //     id: generateId(),
 //   };
 
 //   callback(product);
-// }
+// };
 
-// function logProduct(product) {
+// const logProduct = (product) => {
 //   console.log(product);
-// }
+// };
 
-// function logTotalPrice({ price, quantity }) {
+// const logTotalPrice = ({ price, quantity }) => {
 //   console.log(price * quantity);
-// }
+// };
 
 // createProduct(
 //   {
@@ -206,7 +252,7 @@
   Перепишіть функції, слідуючи синтаксису стрілочних функцій
 */
 
-// function each(array, callback) {
+// const each = (array, callback) => {
 //   const newArr = [];
 
 //   for (const el of array) {
@@ -214,37 +260,17 @@
 //   }
 
 //   return newArr;
-// }
+// };
 
-// console.log(
-//   each([64, 49, 36, 25, 16], function (value) {
-//     return value * 2;
-//   })
-// );
+// console.log(each([64, 49, 36, 25, 16], (value) => value * 2));
 
-// console.log(
-//   each([64, 49, 36, 25, 16], function (value) {
-//     return value - 10;
-//   })
-// );
+// console.log(each([64, 49, 36, 25, 16], (value) => value - 10));
 
-// console.log(
-//   each([64, 49, 36, 25, 16], function (value) {
-//     return Math.sqrt(value);
-//   })
-// );
+// console.log(each([64, 49, 36, 25, 16], (value) => Math.sqrt(value)));
 
-// console.log(
-//   each([1.5, 2.1, 16.4, 9.7, 11.3], function (value) {
-//     return Math.ceil(value);
-//   })
-// );
+// console.log(each([1.5, 2.1, 16.4, 9.7, 11.3], (value) => Math.ceil(value)));
 
-// console.log(
-//   each([1.5, 2.1, 16.4, 9.7, 11.3], function (value) {
-//     return Math.floor(value);
-//   })
-// );
+// console.log(each([1.5, 2.1, 16.4, 9.7, 11.3], (value) => Math.floor(value)));
 
 /*
   7. Метод forEach
@@ -256,9 +282,13 @@
 */
 
 // function logItems(items) {
-//   for (let index = 0; index < items.length; index += 1) {
-//     console.log(`${index + 1} - ${items[index]}`);
-//   }
+//   // for (let index = 0; index < items.length; index += 1) {
+//   //   console.log(`${index + 1} - ${items[index]}`);
+//   // }
+
+//   items.forEach((element, index) => {
+//     console.log(`${index + 1} - ${element}`);
+//   });
 // }
 
 // logItems(['Mango', 'Poly', 'Ajax']);
@@ -278,6 +308,19 @@
 //     console.log(`${namesArray[i]}: ${phonesArray[i]}`);
 //   }
 // }
+
+// const printContactsInfo = ({ names, phones }) => {
+//   const namesArray = names.split(',');
+//   const phonesArray = phones.split(',');
+
+//   // for (let i = 0; i < namesArray.length; i += 1) {
+//   //   console.log(`${namesArray[i]}: ${phonesArray[i]}`);
+//   // }
+
+//   namesArray.forEach((element, index) => {
+//     console.log(`${element}: ${phonesArray[index]}`);
+//   });
+// };
 
 // printContactsInfo({
 //   names: 'Jacob,William,Solomon,Artem',
@@ -300,6 +343,60 @@
 //   return total / args.length;
 // }
 
+// const calculateAverage = (...args) => {
+//   let total = 0;
+
+//   args.forEach((number) => {
+//     total += number;
+//   });
+
+//   return total / args.length;
+// };
+
 // console.log(calculateAverage(1, 2, 3, 4)); // 2.5
 // console.log(calculateAverage(14, 8, 2)); // 8
 // console.log(calculateAverage(27, 43, 2, 8, 36)); // 23.2
+
+// addEventListener('click', handleBtnClick);
+
+// const myLibFactory = () =>  {
+// let value: 0;
+
+// const add (num) {
+//    value += num;
+// };
+// return {
+//    add: add;
+//    getValue () {
+//       return value;
+//    },
+// };
+// };
+
+// const name = 'Andrii';
+
+// const user = {
+//   name,
+//   getValue() {},
+//   getValue: function() {}
+// };
+
+// console.log(user);
+
+// function makePizza() {
+//   return 'Your pizza is being prepared, please wait.';
+// }
+// // Change code below this line
+
+// const result = makePizza();
+
+// // Як додати в result - результат виконання фунцii, ?
+// const pointer = makePizza;
+
+// console.log(pointer());
+
+// // Як додати в pointer - посилання на фунцiю?  I якщо можна пояснiть будь ласка вашi дii, дякую
+
+// debugger;
+
+// const a = 5 + 7;

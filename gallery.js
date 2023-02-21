@@ -10,6 +10,32 @@
   </li>
 */
 
+// const listEl = document.querySelector('.gallery');
+
+// const listItemEl = document.createElement('li');
+
+// listItemEl.classList.add('gallery-item');
+
+// console.log(listItemEl);
+
+// const listItemAnchorEl = document.createElement('a');
+
+// listItemAnchorEl.href = '#';
+
+// console.log(listItemAnchorEl);
+
+// listItemEl.append(listItemAnchorEl);
+
+// const listImgEl = document.createElement('img');
+
+// listImgEl.src = 'https://picsum.photos/id/237/200/300';
+
+// listImgEl.alt = 'Labrador';
+
+// listItemAnchorEl.append(listImgEl);
+
+// listEl.firstElementChild.after(listItemEl);
+
 /* 
   6. Властивості innerHtml і textContent
 
@@ -22,6 +48,15 @@
     </a>
   </li>
 */
+
+// const listEl = document.querySelector('.gallery');
+
+// listEl.innerHTML += `<li class="gallery-item">
+//     <h1>Some text</h1>
+//     <a href="#">
+//       <img src="https://picsum.photos/id/237/200/300" alt="Labrador">
+//     </a>
+//   </li>`;
 
 /*
   7. Створити галерею і вставиити у елемент з класом gallery через
@@ -70,6 +105,27 @@ const pictures = [
 ];
 
 // Написати функцію яка створить розмітку картки
-const makeGalleryCard = ({ width, height, url, alt }) => {};
+// const makeGalleryCard = ({
+//   width,
+//   height,
+//   url,
+//   alt,
+// }) => `<li class="gallery-item">
+//     <a href="#">
+//       <img src="${url}" alt="${alt}" width="${width}" height="${height}">
+//     </a>
+//   </li>`;
 
-// Cтворити масив із розмітки і вставити у список .gallery
+// // Cтворити масив із розмітки і вставити у список .gallery
+
+// const markup = pictures.map((el) => makeGalleryCard(el)).join('');
+
+// console.log(markup);
+
+// const listEl = document.querySelector('.gallery');
+
+// listEl.insertAdjacentHTML('afterbegin', markup);
+
+const array = [li, li, li];
+
+array[1].style.fontSize = `42px`;

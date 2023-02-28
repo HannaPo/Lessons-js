@@ -14,8 +14,23 @@ const paintElements = () => {
     const color = randomColor();
 
     element.style.backgroundColor = color;
-    // element.dataset.color = color;
+
+    element.dataset.color = color;
   });
 };
+
+const handlePalletClick = event => {
+  if (event.target.nodeName !== 'LI') {
+    return;
+  }
+
+  const currentColor = event.target.dataset.color;
+
+  const outputColorEl = event.target.firstElementChild;
+
+  outputColorEl.textContent = currentColor;
+};
+
+palletEl.addEventListener('click', handlePalletClick);
 
 paintElements();

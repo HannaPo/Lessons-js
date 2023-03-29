@@ -1,5 +1,5 @@
 'use strict';
-// https://unsplash.com/
+
 import { UnsplashAPI } from './unsplash-api';
 import createGalleryCards from '../templates/gallery-card.hbs';
 
@@ -9,12 +9,11 @@ const loadMoreBtnEl = document.querySelector('.js-load-more');
 
 const unsplashApi = new UnsplashAPI();
 
-const handleSearchFormSubmit = event => {
+const onSearchFormSubmit = event => {
   event.preventDefault();
 
   const searchQuery = event.currentTarget.elements['user-search-query'].value;
   unsplashApi.query = searchQuery;
-  unsplashApi.page = 1;
 
   unsplashApi
     .fetchPhotos()
@@ -32,7 +31,7 @@ const handleSearchFormSubmit = event => {
     });
 };
 
-const handleLoadMoreBtnClick = () => {
+const onLoadMoreBtnClick = () => {
   unsplashApi.page += 1;
 
   unsplashApi
@@ -52,5 +51,5 @@ const handleLoadMoreBtnClick = () => {
     });
 };
 
-searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-loadMoreBtnEl.addEventListener('click', handleLoadMoreBtnClick);
+searchFormEl.addEventListener('submit', onSearchFormSubmit);
+loadMoreBtnEl.addEventListener('click', onLoadMoreBtnClick);

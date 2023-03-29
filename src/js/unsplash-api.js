@@ -1,20 +1,15 @@
 'use strict';
-
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://api.unsplash.com',
-});
-
 export class UnsplashAPI {
-  // #BASE_URL = 'https://api.unsplash.com';
+  #BASE_URL = ' https://api.unsplash.com';
   #API_KEY = 'LxvKVGJqiSe6NcEVZOaLXC-f2JIIWZaq_o0WrF8mwJc';
 
   page = 1;
   query = null;
 
   fetchPhotos() {
-    return instance.get('/search/photos', {
+    return axios.get(`${this.#BASE_URL}/search/photos`, {
       params: {
         query: this.query,
         page: this.page,

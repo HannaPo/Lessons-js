@@ -107,15 +107,15 @@ const BASE_URL = 'https://jsonplaceholder.typicode.com';
 //? TASK 02
 // Є «звичайна» функція. Як можна всередині неї отримати результат виконання async–функції?
 
-async function wait() {
-  try {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+// async function wait() {
+//   try {
+//     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    return 10;
-  } catch (err) {
-    throw err;
-  }
-}
+//     return 10;
+//   } catch (err) {
+//     throw err;
+//   }
+// }
 
 // async function f() {
 //   try {
@@ -130,10 +130,25 @@ async function wait() {
 
 // f();
 
-(async () => {
-  try {
-    console.log(await wait());
-  } catch (err) {
-    console.log(err);
-  }
-})();
+// (async () => {
+//   try {
+//     console.log(await wait());
+//   } catch (err) {
+//     console.log(err);
+//   }
+// })();
+
+// const sayHi = () => {
+//   debugger;
+
+//   console.log(`sayHi!`);
+// };
+
+// sayHi();
+
+const promise1 = Promise.reject(0);
+const promise2 = new Promise((_, reject) => setTimeout(reject, 100, 'quick'));
+
+const promises = [promise1, promise2];
+
+Promise.any(promises).then(value => console.log(value));
